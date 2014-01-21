@@ -14,7 +14,11 @@
 #   about_triangle_project_2.rb
 #
 def triangle(a, b, c)
-  if (a == b) && (b == c) && (c == a)
+  if (a <= 0) || (b <= 0) || (c <= 0)
+  	raise TriangleError, "Length cannot be less than or equal to 0"
+  elsif (a + b <= c) || (b + c <= a) || (c + a <= b)
+  	raise TriangleError, "The sum of the two other sides must be greater than the length of the hypoteneuse."
+  elsif (a == b) && (b == c) && (c == a)
   	:equilateral
   elsif (a == b) || (b == c) || (c == a)
   	:isosceles
