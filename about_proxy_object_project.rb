@@ -25,13 +25,13 @@ class Proxy
     @object.send(name, *args, &block)
   end
 
-  def called?(method)
-    @messages.include?(method.to_sym)
+  def called?(method_name)
+    @messages.include?(method_name.to_sym)
   end
 
-  def number_of_times_called
-    @messages.each_with_object(Hash.new(0)) {|method, counts| counts[method] += 1}
-    
+  def number_of_times_called(method_name)
+    hash = @messages.each_with_object(Hash.new(0)) {|method_name, counts| counts[method_name] += 1}
+    hash[method_name]
   end
 end
 
